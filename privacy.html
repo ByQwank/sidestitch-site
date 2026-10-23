@@ -1,36 +1,152 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SideStitch privacy policy</title><link rel="stylesheet" href="style.css"></head><body><main>
-<nav aria-label="Information"><a href="./">SideStitch</a><a href="support.html">Support</a></nav>
-<h1>Privacy policy</h1>
-<p>Effective October 23, 2026. Applies to SideStitch 0.4.0 and later. Maintainer: <a href="https://github.com/ByQwank">ByQwank</a>.</p>
-<h2>Purpose and consent</h2>
-<p>SideStitch combines your followed live channels from Twitch and Kick in either site's sidebar. It uses channel information only to display those streams, resolve multistream duplicates, apply your preferences, and operate authenticated sync. It asks you to accept an in-extension disclosure before collecting channel data or connecting either platform.</p>
-<h2>Information handled</h2>
-<ul>
-<li>Followed live channel usernames, display names, avatar URLs, categories and viewer counts, obtained from the platforms and their native Following sidebars.</li>
-<li>Your Twitch account identifier and username needed for authorized followed-stream requests.</li>
-<li>Your settings, linked usernames, matching exceptions, platform priorities, pin/hide rules, connection status, sync timestamps and diagnostic counters, and the version/time of your consent.</li>
-<li>A Twitch OAuth access token with the read-only <code>user:read:follows</code> scope. Twitch handles sign-in through Chrome's authorization flow. SideStitch does not read your Twitch password or Twitch session cookies.</li>
-<li>The Kick <code>session_token</code> cookie, only after you grant optional cookie permission, to authenticate read-only requests for your followed channels. SideStitch does not read other cookies or your Kick password.</li>
-</ul>
-<h2>Storage and retention</h2>
-<p>Channel metadata, your preferences, connection status, consent and sync information are stored in this Chrome profile's local extension storage. They are not synced through a SideStitch account or sent to the maintainer. Cached channel data remains until a newer sync replaces it, you disconnect, clear local data, or uninstall.</p>
-<p>Twitch authorization is stored only in Chrome's trusted extension-session memory, not persistent local or sync storage. Chrome clears session storage when the browser session ends; reconnecting may use Twitch's existing sign-in through a bounded silent authorization flow. SideStitch reads Kick's cookie for the request and never saves a copy. Twitch authorization is validated when first obtained and hourly while an authorization session remains active.</p>
-<h2>Network requests and sharing</h2>
-<p>Requests use HTTPS. Twitch authorization is sent only to Twitch's authorization/API endpoints. The Kick session credential is sent only to Kick. Avatar requests go to Twitch/Kick image hosts. Those services receive the ordinary network information needed to respond, such as your IP address. SideStitch blocks redirects on authenticated data requests and does not attach authorization tokens to avatar URLs.</p>
-<p>There is no SideStitch data-collection server, telemetry, advertising, data brokerage or sale of user data. The maintainer does not receive your follows, credentials or browsing activity. SideStitch does not access unrelated websites, private messages, payment information, or create a viewing-history log.</p>
-<h2>Your controls and deletion</h2>
-<ul>
-<li><strong>Disconnect</strong> removes saved live-channel snapshots and local authorization, attempts to revoke the Twitch grant, and removes optional cookie access. It keeps your preferences, linked accounts, channel rules and consent.</li>
-<li><strong>Settings → Privacy → Clear local data</strong> disconnects both platforms and removes all user-created local/session data, rules, preferences and consent, returning the extension to defaults.</li>
-<li>Uninstalling removes this extension's local data. You can separately revoke SideStitch in Twitch's account Connections settings and manage extension permissions in Chrome.</li>
-</ul>
-<p>Disconnecting or clearing SideStitch does not unfollow channels or sign you out of the Twitch/Kick websites. If network access prevents Twitch revocation, local authorization is still removed; Twitch's Connections settings provide account-side revocation.</p>
-<h2>Limited Use</h2>
-<p>SideStitch's use of user data complies with the Chrome Web Store User Data Policy, including the Limited Use requirements. User data is used only for the extension's disclosed functionality. It is not used for advertising, profiling, lending decisions or unrelated purposes, and is not made available for human review by the maintainer.</p>
-<h2>This website and support</h2>
-<p>This policy and support site are hosted by GitHub Pages. Visiting them sends a normal web request to GitHub, governed by <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>. The site has no added analytics, tracking scripts or forms. If you choose to open a public support issue, GitHub and the public can see what you post. Never include tokens, cookies or passwords.</p>
-<h2>Changes and contact</h2>
-<p>Material changes to how SideStitch handles user data will be disclosed in the extension, with renewed consent before new handling begins. For privacy questions or deletion assistance, use the <a href="https://github.com/ByQwank/sidestitch-site/issues">SideStitch support tracker</a>. The maintainer cannot retrieve data stored only on your device.</p>
-<footer><a href="./">SideStitch</a> · <a href="support.html">Support</a></footer>
-</main></body></html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SideStitch privacy policy</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <nav aria-label="Information">
+        <a href="./">SideStitch</a><a href="support.html">Support</a>
+      </nav>
+      <h1>Privacy policy</h1>
+      <p>
+        Effective October 23, 2026. Applies to SideStitch 0.4.0 and later.
+        Maintainer: <a href="https://github.com/ByQwank">ByQwank</a>.
+      </p>
+      <h2>Purpose and consent</h2>
+      <p>
+        SideStitch combines your followed live channels from Twitch and Kick in
+        either site's sidebar. It uses channel information only to display those
+        streams, resolve multistream duplicates, apply your preferences, and
+        operate authenticated sync. It asks you to accept an in-extension
+        disclosure before collecting channel data or connecting either platform.
+      </p>
+      <h2>Information handled</h2>
+      <ul>
+        <li>
+          Twitch/Kick page URLs, processed transiently to identify the platform
+          and find the tabs whose sidebar should be updated. SideStitch does not
+          save a page-visit or viewing-history log.
+        </li>
+        <li>
+          Followed live channel usernames, display names, avatar URLs,
+          categories and viewer counts, obtained from the platforms and their
+          native Following sidebars.
+        </li>
+        <li>
+          Your Twitch account identifier and username needed for authorized
+          followed-stream requests.
+        </li>
+        <li>
+          Your settings, linked usernames, matching exceptions, platform
+          priorities, pin/hide rules, connection status, sync timestamps and
+          diagnostic counters, and the version/time of your consent.
+        </li>
+        <li>
+          A Twitch OAuth access token with the read-only
+          <code>user:read:follows</code> scope. Twitch handles sign-in through
+          Chrome's authorization flow. SideStitch does not read your Twitch
+          password or Twitch session cookies.
+        </li>
+        <li>
+          The Kick <code>session_token</code> cookie, only after you grant
+          optional cookie permission, to authenticate read-only requests for
+          your followed channels. SideStitch does not read other cookies or your
+          Kick password.
+        </li>
+      </ul>
+      <h2>Storage and retention</h2>
+      <p>
+        Channel metadata, your preferences, connection status, consent and sync
+        information are stored in this Chrome profile's local extension storage.
+        They are not synced through a SideStitch account or sent to the
+        maintainer. Cached channel data remains until a newer sync replaces it,
+        you disconnect, clear local data, or uninstall.
+      </p>
+      <p>
+        Twitch authorization is stored only in Chrome's trusted
+        extension-session memory, not persistent local or sync storage. Chrome
+        clears session storage when the browser session ends; reconnecting may
+        use Twitch's existing sign-in through a bounded silent authorization
+        flow. SideStitch reads Kick's cookie for the request and never saves a
+        copy. Twitch authorization is validated when first obtained and hourly
+        while an authorization session remains active.
+      </p>
+      <h2>Network requests and sharing</h2>
+      <p>
+        Requests use HTTPS. Twitch authorization is sent only to Twitch's
+        authorization/API endpoints. The Kick session credential is sent only to
+        Kick. Avatar requests go to Twitch/Kick image hosts. Those services
+        receive the ordinary network information needed to respond, such as your
+        IP address. SideStitch blocks redirects on authenticated data requests
+        and does not attach authorization tokens to avatar URLs.
+      </p>
+      <p>
+        There is no SideStitch data-collection server, telemetry, advertising,
+        data brokerage or sale of user data. The maintainer does not receive
+        your follows, credentials or browsing activity. SideStitch does not
+        access unrelated websites, private messages, payment information, or
+        create a viewing-history log.
+      </p>
+      <h2>Your controls and deletion</h2>
+      <ul>
+        <li>
+          <strong>Disconnect</strong> removes saved live-channel snapshots and
+          local authorization, attempts to revoke the Twitch grant, and removes
+          optional cookie access. It keeps your preferences, linked accounts,
+          channel rules and consent.
+        </li>
+        <li>
+          <strong>Settings → Privacy → Clear local data</strong> disconnects
+          both platforms and removes all user-created local/session data, rules,
+          preferences and consent, returning the extension to defaults.
+        </li>
+        <li>
+          Uninstalling removes this extension's local data. You can separately
+          revoke SideStitch in Twitch's account Connections settings and manage
+          extension permissions in Chrome.
+        </li>
+      </ul>
+      <p>
+        Disconnecting or clearing SideStitch does not unfollow channels or sign
+        you out of the Twitch/Kick websites. If network access prevents Twitch
+        revocation, local authorization is still removed; Twitch's Connections
+        settings provide account-side revocation.
+      </p>
+      <h2>Limited Use</h2>
+      <p>
+        SideStitch's use of user data complies with the Chrome Web Store User
+        Data Policy, including the Limited Use requirements. User data is used
+        only for the extension's disclosed functionality. It is not used for
+        advertising, profiling, lending decisions or unrelated purposes, and is
+        not made available for human review by the maintainer.
+      </p>
+      <h2>This website and support</h2>
+      <p>
+        This policy and support site are hosted by GitHub Pages. Visiting them
+        sends a normal web request to GitHub, governed by
+        <a
+          href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
+          >GitHub's privacy statement</a
+        >. The site has no added analytics, tracking scripts or forms. If you
+        choose to open a public support issue, GitHub and the public can see
+        what you post. Never include tokens, cookies or passwords.
+      </p>
+      <h2>Changes and contact</h2>
+      <p>
+        Material changes to how SideStitch handles user data will be disclosed
+        in the extension, with renewed consent before new handling begins. For
+        privacy questions or deletion assistance, use the
+        <a href="https://github.com/ByQwank/sidestitch-site/issues"
+          >SideStitch support tracker</a
+        >. The maintainer cannot retrieve data stored only on your device.
+      </p>
+      <footer>
+        <a href="./">SideStitch</a> · <a href="support.html">Support</a>
+      </footer>
+    </main>
+  </body>
+</html>
